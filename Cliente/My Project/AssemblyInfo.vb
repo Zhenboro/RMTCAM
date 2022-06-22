@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' Revisar los valores de los atributos del ensamblado
 
-<Assembly: AssemblyTitle("Cliente")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("Cliente")>
-<Assembly: AssemblyCopyright("Copyright ©  2022")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTitle("RemoteCamera Client")>
+<Assembly: AssemblyDescription("Cliente de camara web remota")>
+<Assembly: AssemblyCompany("Zhenboro")>
+<Assembly: AssemblyProduct("RMTCAM Client")>
+<Assembly: AssemblyCopyright("")>
+<Assembly: AssemblyTrademark("Zhenboro")>
 
 <Assembly: ComVisible(False)>
 

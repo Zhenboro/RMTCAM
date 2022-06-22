@@ -69,18 +69,21 @@ Public Class Main
                 REMOTO = YO.AcceptTcpClient()
                 NS = REMOTO.GetStream
                 While REMOTO.Connected = True
-                    Dim content = BF.Deserialize(NS)
-                    Dim analizador As String = System.Text.Encoding.UTF7.GetString(content)
-                    If analizador.StartsWith("[") Then
-                        ProcesarMensaje(content)
-                    Else
-                        PictureBox1.Image = content
-                        RESOLUCIONX = PictureBox1.Image.Width
-                        RESOLUCIONY = PictureBox1.Image.Height
-                    End If
+                    Try
+                        Dim content = BF.Deserialize(NS)
+                        If content.GetType().FullName = "System.Byte[]" Then
+                            ProcesarMensaje(System.Text.Encoding.UTF7.GetString(content))
+                        Else
+                            PictureBox1.Image = content
+                            RESOLUCIONX = PictureBox1.Image.Width
+                            RESOLUCIONY = PictureBox1.Image.Height
+                        End If
+                    Catch ex As Exception
+                        AddToLog("RECIBIR(0)@Main", "Error: " & ex.Message, True)
+                    End Try
                 End While
             Catch ex As Exception
-                AddToLog("RECIBIR@Main", "Error: " & ex.Message, True)
+                AddToLog("RECIBIR(1)@Main", "Error: " & ex.Message, True)
             End Try
         End While
     End Sub
@@ -118,8 +121,7 @@ Public Class Main
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        envioMensaje = "[CameraSelect]|" & ComboBox1.SelectedIndex
+        envioMensaje = "[CameraSelect]" & ComboBox1.SelectedIndex
         Button3.Enabled = False
     End Sub
 End Class
-'el mensaje CameraList no se procesa bien.

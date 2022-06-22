@@ -100,7 +100,7 @@ Public Class Main
             Return AddToLog("GetCameras@Main", "Error: " & ex.Message, True)
         End Try
     End Function
-    Function CameraManager(Optional ByVal camIndex As SByte = 0) As String
+    Sub CameraManager(Optional ByVal camIndex As SByte = 0)
         Try
             If isWebCamActive Then
                 usingCamera = camIndex
@@ -115,25 +115,27 @@ Public Class Main
                 Catch
                 End Try
             End If
-            Return "Camera '" & WebCameras(usingCamera).ToString.Split("|")(1) & "' (" & usingCamera & ") is now " & isWebCamActive
         Catch ex As Exception
-            Return AddToLog("CameraManager@Main", "Error: " & ex.Message, True)
+            AddToLog("CameraManager@Main", "Error: " & ex.Message, True)
         End Try
-    End Function
+    End Sub
     Private Sub Capturando(sender As Object, eventArgs As NewFrameEventArgs)
         BMP = DirectCast(eventArgs.Frame.Clone(), Bitmap)
     End Sub
 
     Sub SendPicture()
         Dim BF As New BinaryFormatter
-        Dim MS As New MemoryStream
         While True
             Try
-                'Dim MS As New MemoryStream
-                BMP.Save(MS, Imaging.ImageFormat.Png)
-                BMP = Image.FromStream(MS)
-                NS = YO.GetStream
-                BF.Serialize(NS, BMP)
+                If YO.Connected Then
+                    Dim MS As New MemoryStream
+                    BMP.Save(MS, Imaging.ImageFormat.Jpeg)
+                    BMP = Image.FromStream(MS)
+                    NS = YO.GetStream
+                    BF.Serialize(NS, BMP)
+                Else
+                    End
+                End If
                 Threading.Thread.Sleep(3000) '3 sec
             Catch ex As Exception
                 AddToLog("SendPicture@Main", "Error: " & ex.Message, True)
@@ -186,4 +188,3 @@ Public Class Main
         End While
     End Sub
 End Class
-'el mensaje CameraList no se envia bien (?)

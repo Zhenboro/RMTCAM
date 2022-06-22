@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Servidor.Main
+            Me.MainForm = Global.RMT_CAM_Server.Main
         End Sub
     End Class
 End Namespace

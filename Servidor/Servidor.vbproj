@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3B5A88B0-E667-4CC7-BDB0-339C510C9751}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Servidor.My.MyApplication</StartupObject>
-    <RootNamespace>Servidor</RootNamespace>
-    <AssemblyName>Servidor</AssemblyName>
+    <StartupObject>RMT_CAM_Server.My.MyApplication</StartupObject>
+    <RootNamespace>RMT_CAM_Server</RootNamespace>
+    <AssemblyName>RMTCAM_Server</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -22,7 +22,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Servidor.xml</DocumentationFile>
+    <DocumentationFile>RMTCAM_Server.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -32,7 +32,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Servidor.xml</DocumentationFile>
+    <DocumentationFile>RMTCAM_Server.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
